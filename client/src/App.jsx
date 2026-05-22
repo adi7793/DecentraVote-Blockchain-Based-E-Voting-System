@@ -1,29 +1,40 @@
-function App() {
-  return (
-    <div className="min-h-screen bg-gray-100">
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
-      <nav className="bg-blue-700 text-white p-4 shadow-lg">
-        <h1 className="text-2xl font-bold">
-          DecentraVote
-        </h1>
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Dashboard from './pages/Dashboard'
+
+function App() {
+
+  return (
+    <BrowserRouter>
+
+      <nav className="bg-blue-700 text-white p-4 flex gap-6">
+
+        <Link to="/">Home</Link>
+
+        <Link to="/login">Login</Link>
+
+        <Link to="/register">Register</Link>
+
+        <Link to="/dashboard">Dashboard</Link>
+
       </nav>
 
-      <div className="flex flex-col items-center justify-center mt-20">
+      <Routes>
 
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">
-          Blockchain Based E-Voting System
-        </h2>
+        <Route path="/" element={<Home />} />
 
-        <p className="text-gray-600 text-lg mb-8">
-          Secure • Transparent • Tamper-Proof
-        </p>
+        <Route path="/login" element={<Login />} />
 
-        <button className="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800">
-          Connect Wallet
-        </button>
+        <Route path="/register" element={<Register />} />
 
-      </div>
-    </div>
+        <Route path="/dashboard" element={<Dashboard />} />
+
+      </Routes>
+
+    </BrowserRouter>
   )
 }
 
